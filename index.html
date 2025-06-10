@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Anonymous function
+        const great=function(name){
+            document.write("Hello"+name+"(from anonymous function)<br>");  
+        }
+        great("Alice");
+        // named funtion
+        function square(x){
+            return x*x;
+        }
+        document.write("square of 5 is"+square(5)+"<br>");
+        // Arrow function
+        let multi=(a,b)=>a*b;
+        document.write("3*4="+multi(3,4)+"<br>");
+        // Higher order function
+        function apply(a,b,add){
+            return add(a,b);
+        }
+        const add=(x,y)=>x+y;
+        document.write("20+5="+add(20,5)+"<br>");
+        // IIFE function
+        (function(){
+            document.write("This is a function Type");
+        })();
+    </script>
+    <p>Next Assigmnent 2:<a href="js5.html">Click Here</a></p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            display: inline;
+        }
+        .edit{
+            border:2px solid red;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="return validateForm()">
+        <h1>Registration Form</h1>
+        Name: <input type="text" id="name" >
+        <div id="a" style="color: red;"></div>
+        <br>
+        <br>
+        Email: <input type="email" id="email">
+        <div id="e" style="color:red"></div>
+        <br>
+        <br>
+        Website: <input type="url" id="url">
+        <div id="u" style="color:red"></div>
+        <br>
+        <br>
+        Message: <textarea id="msg" cols="30" rows="10"></textarea>
+        <div id="m" style="color:red"></div>
+        <br>
+        <br>
+        <button type="submit" >Submit</button>
+    </form>
+    <script>
+        function isEmpty(value) {
+            return value.trim() === ""||!value;
+        }
+        function validateForm() {
+            let ok = true;
+            const fields = [
+                { elId: 'name', errId: 'a', label: 'Name' },
+                { elId: 'email', errId: 'e', label: 'Email' },
+                { elId: 'url', errId: 'u', label: 'Website' },
+                { elId: 'msg', errId: 'm', label: 'Message' }
+            ];
+            fields.forEach(f => {
+                const el = document.getElementById(f.elId);   // Get the element
+                const errDiv = document.getElementById(f.errId);
+                el.classList.remove('edit');
+                errDiv.textContent = "";
+                if (isEmpty(el.value)) {
+                el.classList.add('edit');                   // Add class to element
+                errDiv.textContent = `${f.label} is required`;
+                ok = false;
+                }
+            });
+            return ok;
+        }
+    </script>
+</body>
+</html> 
